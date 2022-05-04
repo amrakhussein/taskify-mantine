@@ -20,6 +20,7 @@ export default function TaskListItem({
   task,
   taskMarkComplete,
   taskUndoComplete,
+  taskHandleDelete,
 }: any) {
   const [taskModalOpen, setTaskModalOpen] = useState(false)
 
@@ -84,22 +85,34 @@ export default function TaskListItem({
                   transform: 'rotate(90deg)',
                 }}
               >
-                <Menu.Item
-                  icon={<Check size={16} strokeWidth={5} />}
-                  onClick={() => taskMarkComplete(task.id)}
-                >
-                  Mark Complete
-                </Menu.Item>
                 <Divider />
-                <Menu.Item onClick={() => taskUndoComplete(task.id)}>
-                  Undo Mark Complete
-                </Menu.Item>
+
+                {!task.completed ? (
+                  <Menu.Item
+                    sx={{
+                      opacity: `${task.completed ? '0.4' : '1'}`,
+                    }}
+                    icon={<Check size={16} strokeWidth={5} />}
+                    onClick={() => taskMarkComplete(task.id)}
+                  >
+                    Mark Complete
+                  </Menu.Item>
+                ) : (
+                  <Menu.Item
+                    sx={{
+                      opacity: `${!task.completed ? '0.4' : '1'}`,
+                    }}
+                    onClick={() => taskUndoComplete(task.id)}
+                  >
+                    Undo Mark Complete
+                  </Menu.Item>
+                )}
                 <Divider />
 
                 <Menu.Item
                   color='red'
                   icon={<Trash size={16} />}
-                  onClick={() => console.log('Hello')}
+                  onClick={() => taskHandleDelete(task.id)}
                 >
                   Delete Task
                 </Menu.Item>
@@ -157,10 +170,10 @@ export default function TaskListItem({
           <Divider my='xl' />
 
           <Box
-            sx={(theme) => ({
+            sx={{
               display: 'flex',
               justifyContent: 'space-between',
-            })}
+            }}
           >
             <Box
               sx={(theme) => ({
