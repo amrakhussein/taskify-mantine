@@ -26,7 +26,7 @@ export default function TaskListItem({
 
   const taskFormatDate = (taskDate: Date) => {
     let date = new Date(taskDate).toISOString()
-    return format(parseISO(date), "yyyy-MM-dd' | 'HH:mm")
+    return format(parseISO(date), "yyyy-MM-dd' | 'hh:mm aaaaa'm'")
   }
 
   const taskContentTruncate = (text: string) =>
@@ -35,7 +35,7 @@ export default function TaskListItem({
     text.length > 10 ? text.substring(0, 35) + '...' : text
 
   return (
-    <Box sx={{}}>
+    <Box component='section' sx={{}}>
       <Group position='center' grow spacing='sm'>
         <Paper
           my='sm'
@@ -73,6 +73,7 @@ export default function TaskListItem({
                   fontWeight: 'bold',
                   color: theme.colors.gray[9],
                 })}
+                component='h2'
               >
                 {taskTitleTruncate(task.title)}
               </Text>
@@ -126,6 +127,7 @@ export default function TaskListItem({
             sx={(theme) => ({
               color: theme.colors.gray[8],
             })}
+            component='p'
           >
             {taskContentTruncate(task.content)}
           </Text>
@@ -192,7 +194,7 @@ export default function TaskListItem({
                   borderColor: theme.colors.orange[9],
                 })}
                 variant='outline'
-                onClick={() => setTaskModalOpen(!taskModalOpen)}
+                onClick={() => setTaskModalOpen(true)}
               >
                 EXPAND
               </Button>
