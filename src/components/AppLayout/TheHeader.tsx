@@ -2,10 +2,11 @@ import { Box, Container, Text } from '@mantine/core'
 
 export default function TheHeader({ count }: any) {
   const displayHeading = (): JSX.Element | null => {
-    const showOneTaskCount = <Text>One task to finish! </Text>
-    const showTaskCount = <Text>{count} tasks to finish.. </Text>
+    const showOneTaskCount = <Text component='h3'>One task to finish! </Text>
+    const showTaskCount = <Text component='h3'>{count} tasks to finish.. </Text>
     const showTaskMessage = (
       <Text
+        component='h3'
         sx={(theme) => ({
           fontSize: '2rem',
           [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
@@ -28,6 +29,7 @@ export default function TheHeader({ count }: any) {
 
   return (
     <Box
+      component='header'
       sx={(theme) => ({
         borderBottom: '0.3rem solid',
         borderColor: theme.colors.orange[9],
@@ -35,12 +37,16 @@ export default function TheHeader({ count }: any) {
     >
       <Container
         size='xl'
-        sx={{
+        sx={(theme) => ({
           display: 'flex',
           // flexGrow: 1,
           justifyContent: 'space-around',
           alignItems: 'center',
-        }}
+          height: '6rem',
+          [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
+            height: '4rem',
+          },
+        })}
       >
         <Text
           sx={(theme) => ({
@@ -50,6 +56,7 @@ export default function TheHeader({ count }: any) {
               fontSize: '2rem',
             },
           })}
+          component='h1'
         >
           Taskify
         </Text>
