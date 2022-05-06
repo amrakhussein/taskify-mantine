@@ -5,18 +5,11 @@ export interface TaskNewModalOpenState {
 }
 
 export interface Task {
-  id: number
+  id: string
   title: string
   content: string
   completed: boolean
-  date: string | Date
-}
-
-export interface TaskListItemProps {
-  task: Task
-  taskMarkComplete: (value: number) => void
-  taskUndoComplete: (value: number) => void
-  taskHandleDelete: (id: number) => void
+  date: Date
 }
 
 export interface TaskClearAccomplishedProps {
@@ -39,6 +32,12 @@ export interface TaskCardActionButtonsProps {
   taskFilter: () => void
 }
 
+export interface TaskListItemProps {
+  task: Task
+  taskMarkComplete: (value: string) => void
+  taskUndoComplete: (value: string) => void
+  taskHandleDelete: (id: string) => void
+}
 export interface TaskListItemModalProps {
   taskTitle: string
   taskContent: string

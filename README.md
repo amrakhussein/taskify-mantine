@@ -14,7 +14,7 @@ a todo app to experiment with mantine styling lib
 - TypeScript
 - React
 - Mantine
-- react-form-hooks
+- react-hook-form
 ---
 ## project can be run by:
 ```ts

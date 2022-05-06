@@ -1,11 +1,13 @@
 import { Box, Button, Divider, Group, Paper, Text } from '@mantine/core'
+import { TaskListItemModalProps } from '../../../interfaces'
 
 export default function TaskListItemModal({
   taskTitle,
   taskContent,
   taskDate,
   setTaskModalOpen,
-}: any) {
+}: TaskListItemModalProps) {
+  // 
   return (
     <Box sx={{}}>
       <Group position='center' grow spacing='sm'>
@@ -14,9 +16,6 @@ export default function TaskListItemModal({
           sx={(theme) => ({
             backgroundColor: theme.colors.gray[2],
             maxWidth: '30rem',
-            // minHeight: '12rem',
-            // textOverflow: 'ellipsis',
-            // whiteSpace: 'nowrap'
             overflow: 'hidden',
           })}
           shadow='xs'

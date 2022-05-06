@@ -19,7 +19,7 @@ export default function App() {
   const initialized: Task[] = localStorageIfany ? localStorageIfany : taskData
 
   const [todos, setTodos] = useState<Task[]>(initialized)
-  console.log('todos: ', todos)
+  
   const { length: NumberOfTodos } = todos
 
   const taskMarkComplete = (taskID: any) => {
@@ -45,12 +45,12 @@ export default function App() {
 
   const addTask: AddTaskFunc = (title: string, body: string): void => {
     let taskData = [...todos]
-    console.log('taskData: ', taskData)
+    
 
     const taskID = String(useId) // handles types error
     const taskDate = new Date()
 
-    console.log('taskID: ', typeof taskID)
+    
     let newTask = {
       id: taskID,
       title: title,

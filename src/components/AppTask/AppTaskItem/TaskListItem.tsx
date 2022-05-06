@@ -14,6 +14,7 @@ import { parseISO } from 'date-fns'
 import format from 'date-fns/format'
 import { useState } from 'react'
 import { Check, Trash } from 'tabler-icons-react'
+import { TaskListItemProps } from '../../../interfaces'
 import TaskListItemModal from './TaskListItemModal'
 
 export default function TaskListItem({
@@ -21,11 +22,12 @@ export default function TaskListItem({
   taskMarkComplete,
   taskUndoComplete,
   taskHandleDelete,
-}: any) {
+}: TaskListItemProps) {
   const [taskModalOpen, setTaskModalOpen] = useState(false)
 
-  const taskFormatDate = (taskDate: Date) => {
-    let date = new Date(taskDate).toISOString()
+  const taskFormatDate = (taskDate:  Date) => {
+    const dateStringified = String(taskDate) // handles types error
+    const date = new Date(dateStringified).toISOString()
     return format(parseISO(date), "yyyy-MM-dd' | 'hh:mm aaaaa'm'")
   }
 
@@ -82,9 +84,15 @@ export default function TaskListItem({
               <Menu
                 // trigger='hover'
                 delay={250}
-                sx={{
-                  transform: 'rotate(90deg)',
-                }}
+                sx={(theme) => ({
+                  // transform: 'rotate(90deg)',
+                  borderRadius: '50%',
+                  backgroundColor: theme.colors.orange[2],
+                  '&:hover': {
+                    // borderRadius: '50%',
+                    // backgroundColor: theme.colors.orange[6],
+                  },
+                })}
               >
                 <Divider />
 

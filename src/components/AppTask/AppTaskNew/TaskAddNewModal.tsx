@@ -1,8 +1,11 @@
 import { Box, Button, Text, Textarea, TextInput } from '@mantine/core'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IFormValues } from '../../../interfaces'
+import { IFormValues, TaskAddNewModalProps } from '../../../interfaces'
 
-export default function TaskAddNewModal({ addTask, setTaskNewModalOpen }: any) {
+export default function TaskAddNewModal({
+  addTask,
+  setTaskNewModalOpen,
+}: TaskAddNewModalProps) {
   const {
     register,
     handleSubmit,
@@ -70,11 +73,12 @@ export default function TaskAddNewModal({ addTask, setTaskNewModalOpen }: any) {
           </Text>
         )}
         <Button
-          disabled={!isValid}
+          // disabled={!isValid}
           color='orange'
           sx={{
             marginTop: '2rem',
             float: 'right',
+            opacity: `${!isValid ? '0.3' : '1'}`,
           }}
           type='submit'
         >

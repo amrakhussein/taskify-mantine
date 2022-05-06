@@ -2,8 +2,16 @@ import { Box, Container, Text } from '@mantine/core'
 
 export default function TheHeader({ count }: any) {
   const displayHeading = (): JSX.Element | null => {
-    const showOneTaskCount = <Text component='h3'>One task to finish! </Text>
-    const showTaskCount = <Text component='h3'>{count} tasks to finish.. </Text>
+    const showOneTaskCount = (
+      <Text size='xl' component='h3'>
+        One task to accomplish!{' '}
+      </Text>
+    )
+    const showTaskCount = (
+      <Text size='xl' component='h3'>
+        {count} tasks to accomplish!{' '}
+      </Text>
+    )
     const showTaskMessage = (
       <Text
         component='h3'
@@ -14,7 +22,7 @@ export default function TheHeader({ count }: any) {
           },
         })}
       >
-        let's make a task!
+        Let's make a task!
       </Text>
     )
 
@@ -38,6 +46,7 @@ export default function TheHeader({ count }: any) {
       <Container
         size='xl'
         sx={(theme) => ({
+          color: theme.colors.gray[8],
           display: 'flex',
           // flexGrow: 1,
           justifyContent: 'space-around',
@@ -50,6 +59,7 @@ export default function TheHeader({ count }: any) {
       >
         <Text
           sx={(theme) => ({
+            color: 'black',
             flexGrow: 1,
             fontSize: '3rem',
             [`@media (max-width: ${theme.breakpoints.xs}px)`]: {
