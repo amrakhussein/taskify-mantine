@@ -18,9 +18,9 @@ a todo app to experiment with mantine styling lib
 ---
 ## project can be run by:
 ```ts
-yarn && yarn start
+yarn && yarn dev
 ```
 or
 ```ts
-npm install && npm start
+npm install && npm dev
 ```
