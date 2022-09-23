@@ -49,7 +49,7 @@ export interface AddTaskFunc {
   (title: string, body: string): void
 }
 
-export interface IFormValues {
+export interface FormValues {
   title: string
   content: string
 }

@@ -1,6 +1,6 @@
 import { Box, Button, Text, Textarea, TextInput } from '@mantine/core'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { IFormValues, TaskAddNewModalProps } from '../../../interfaces'
+import { FormValues, TaskAddNewModalProps } from '../../../interfaces'
 
 export default function TaskAddNewModal({
   addTask,
@@ -11,14 +11,14 @@ export default function TaskAddNewModal({
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm<IFormValues>({
+  } = useForm<FormValues>({
     mode: 'onChange', // required for isValid. track input state for submit button
     defaultValues: {
       title: '',
       content: '',
     },
   })
-  const onSubmit: SubmitHandler<IFormValues> = ({ title, content }) => {
+  const onSubmit: SubmitHandler<FormValues> = ({ title, content }) => {
     addTask(title, content)
     reset()
     setTaskNewModalOpen(false)
